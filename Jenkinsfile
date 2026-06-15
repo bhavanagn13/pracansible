@@ -11,7 +11,7 @@ pipeline {
 	}
 	
 	stages{
-		stage("checkout'){
+		stage('checkout'){
 		steps{
 			git branch: 'main' , url : 'https://github.com/bhavanagn13/pracansible.git'
 		}
