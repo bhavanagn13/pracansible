@@ -1,0 +1,19 @@
+---
+- name: Deploy to Tomcat
+  hosts: web
+  become: yes
+  
+  tasks: 
+  
+    - name: Stop tomcat
+      shell: /opt/tomcat/bin/sh shutdown.sh
+      
+    - name: Copy war file to tomcat
+      copy:
+        src: "/home/devops/ansible/target/ansible.war"
+        dest: "/opt/tomcat/webapps/ansible.war"
+        remote_src: no
+      
+    - name: Start tomcat
+      shell: /opt/tomcat/bin/sh startup.sh
+  
